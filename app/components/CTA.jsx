@@ -6,7 +6,7 @@ const CTA = ({theme}) => {
     <div className='cta'>
       <p className={theme === "dark" ? "dark-cta-text" :'cta-text'}>
         Have a project in mind? <br className='sm:block hidden' />
-        Let's build something together!
+        {"Let's build something together!"}
       </p>
       <Link href={{
         pathname : '/contact',

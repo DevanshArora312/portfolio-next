@@ -21,7 +21,7 @@ const About = () => {
       <Headbar theme={theme}/> 
       <section className='max-container'>
         <h1 className={theme === "dark" ? 'dark-head-text' : 'head-text'}>
-          Hello, I'm Devansh Arora👋
+          {"Hello, I'm Devansh Arora👋"}
         </h1>
 
         <div className='flex w-full justify-center'>
@@ -106,8 +106,8 @@ const About = () => {
           <h3 className={theme === "dark" ? 'dark-subhead-text' : 'subhead-text'}>Work Experience.</h3>
           <div className='mt-5 flex flex-col gap-3 text-slate-500'>
             <p>
-              I've worked a few societies in my college, leveling up my skills and
-              teaming up with smart people. Here's the rundown:
+              {"I've worked a few societies in my college, leveling up my skills and"}
+              {"teaming up with smart people. Here's the rundown:"}
             </p>
           </div>
         </div>

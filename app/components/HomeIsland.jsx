@@ -18,16 +18,19 @@ const HomeIsland = () => {
     let screenScale = [1,1,1];
     let screenPostion = [0, -6.5, -43];
     let rotation = [0.1, 4.7, 0];
-    useEffect(()=>{
-      if(window.innerWidth < 768) {
-        screenScale = [0.9, 0.9, 0.9];
-      } else {
-        screenScale = [1, 1, 1];
-      }
-    },[])
+    if(window.innerWidth < 768) {
+      screenScale = [0.9, 0.9, 0.9];
+    } else {
+      screenScale = [1, 1, 1];
+    }
     return [screenScale, screenPostion,rotation];
   }
-  const [islandScale, islandPosition,islandRotation] = adjustIslandForScreenSize();
+  let islandScale = [1,1,1];
+  let islandPosition = [0, -6.5, -43];
+  let islandRotation = [0.1, 4.7, 0];  
+  useEffect(()=>{
+    [islandScale, islandPosition,islandRotation] = adjustIslandForScreenSize();
+  },[]);
   const theme = useSearchParams().get("theme");
   return (
     <Provider store={store}>

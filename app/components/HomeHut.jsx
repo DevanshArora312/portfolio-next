@@ -18,7 +18,6 @@ const HomeHut = () => {
     let screenScale = [2, 2, 2];;
     let screenPostion = [0, -9.5, -53];
     let rotation = [0.1, 24.9, 0];
-    useEffect(()=>{
       if(window.innerWidth < 510){
         screenScale = [1.2, 1.2, 1.2];
       }
@@ -27,10 +26,14 @@ const HomeHut = () => {
       } else {
         screenScale = [2, 2, 2];
       }
-    },[])
     return [screenScale, screenPostion,rotation];
   }
-  const [hutScale, hutPosition,hutRotation] = adjustHutForScreenSize();
+  let hutScale = [2, 2, 2];;
+  let hutPosition = [0, -9.5, -53];
+  let hutRotation = [0.1, 24.9, 0];
+  useEffect(()=>{
+    [hutScale, hutPosition,hutRotation] = adjustHutForScreenSize();
+  },[])
   const theme = useSearchParams().get("theme")
   return (
     <Provider store={store}>

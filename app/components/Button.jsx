@@ -5,6 +5,7 @@ import { IoSunnySharp } from "react-icons/io5";
 import { FaCloudMoon } from "react-icons/fa";
 
 const Button = ({title,navLink}) => {
+  const sunRef = useRef();
   if( title === "light"){
     const focusHandle = () => {
       document.getElementById("icon").classList.add("transform") ;
@@ -18,7 +19,6 @@ const Button = ({title,navLink}) => {
       document.getElementById("icon").classList.add("rotate-0") ;
       console.log(document.getElementById("icon").classList)
     }
-    const sunRef = useRef();
     return (
       <Link 
         onMouseEnter={focusHandle}

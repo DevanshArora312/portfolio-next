@@ -39,8 +39,7 @@ const Contact = () => {
     <div className={`w-full h-full min-h-screen ${styles.bg}`}>
       <Headbar theme={theme}/>
       <section className='relative flex lg:flex-row flex-col max-container'>
-        {alert.show && <Alert {...alert} />}
-
+        
         <div className='flex-1 min-w-[50%] flex flex-col'>
           <h1 className={theme === "dark" ? 'dark-head-text' : 'head-text'}>Get in Touch</h1>
 
