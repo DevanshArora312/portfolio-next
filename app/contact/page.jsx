@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 import { useSearchParams } from 'next/navigation';
 import Headbar from '../components/Headbar';
 
-const Contact = () => {
+const Page = () => {
   const [isLoading, setLoading] = useState(false);
   const [formData,setFormData] = useState({name : "",email : "",message:""});
   const [animation,setAnimation] = useState("idle");
@@ -135,5 +135,12 @@ const Contact = () => {
   );
 };
 
+const Contact = () =>{
+  return(
+    <Suspense>
+      <Page/>
+    </Suspense>
+  );
+}
 
 export default Contact;

@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import { TypeAnimation } from 'react-type-animation';
 import { experiences,skills } from '@/constants';
 import { motion, useInView } from 'framer-motion';
@@ -13,7 +13,7 @@ import { useSearchParams } from 'next/navigation';
 import Headbar from '../components/Headbar';
 import CTA from '../components/CTA';
 
-const About = () => {
+const Page = () => {
   const [image,setImage] = useState("/pfp.png");
   const theme = useSearchParams().get("theme");
   return (
@@ -173,4 +173,13 @@ const About = () => {
     
   );
 };
+
+
+const About = () => {
+  return(
+    <Suspense>
+      <Page/>
+    </Suspense>
+  );
+}
 export default About

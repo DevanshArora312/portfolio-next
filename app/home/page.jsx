@@ -1,10 +1,10 @@
 "use client"
-import React from 'react'
+import React,{Suspense} from 'react'
 import HomeHut from '../components/HomeHut';
 import HomeIsland from '../components/HomeIsland';
 import Headbar from '../components/Headbar';
 import { useSearchParams } from 'next/navigation';
-const Home = () => {
+const Page = () => {
     const theme = useSearchParams().get("theme");
     // console.log(theme)
     return (
@@ -17,5 +17,13 @@ const Home = () => {
     </div>
   )
 }
+
+const Home = () =>{
+    return(
+      <Suspense>
+        <Page/>
+      </Suspense>
+    );
+  }
 
 export default Home

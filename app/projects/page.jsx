@@ -1,11 +1,11 @@
 "use client"
-import React from 'react'
+import React,{Suspense} from 'react'
 import { workInProg } from '@/assets/icons'
 import { useSearchParams } from 'next/navigation';
 import Headbar from '../components/Headbar';
 import CTA from '../components/CTA';
 
-const Projects = () => {
+const Page = () => {
   const theme = useSearchParams().get("theme");
     
   return (
@@ -20,6 +20,13 @@ const Projects = () => {
         </div>
     </div>
   )
+}
+const Projects = () =>{
+  return(
+    <Suspense>
+      <Page/>
+    </Suspense>
+  );
 }
 
 export default Projects
