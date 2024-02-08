@@ -8,7 +8,7 @@ const HeadButtons = ({to,text,classProp}) => {
   const theme = useSearchParams().get("theme");
     
   return (
-    <div className={`${theme} ${(path !== "/home" && text==="Change Theme?") ? "hidden" : ""}`}>
+    <div className={`${theme}  ${(path !== "/home" && text==="Change Theme?") ? "hidden" : ""}`}>
         <Link href={{
           pathname : to,
           query : {theme:theme}
