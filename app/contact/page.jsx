@@ -5,16 +5,67 @@ import { Fox } from "@/models/Fox";
 import Loader from "../components/Loader";
 import { useSearchParams } from 'next/navigation';
 import Headbar from '../components/Headbar';
-
+import Alert from "../components/Alerts";
+import useAlert from "../hooks/useAlerts";
+import emailjs from "@emailjs/browser";
+import {SERVICE_ID,TEMPLATE_ID,EMAILJS_PUBLIC_KEY} from "../config"
 const Page = () => {
   const [isLoading, setLoading] = useState(false);
   const [formData,setFormData] = useState({name : "",email : "",message:""});
   const [animation,setAnimation] = useState("idle");
   const theme = useSearchParams().get("theme");
+  const { alert, showAlert, hideAlert } = useAlert();
 
-  const handleSubmit = () =>{
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setAnimation("hit");
+    // console.log(SERVICE_ID,TEMPLATE_ID,EMAILJS_PUBLIC_KEY)
+    emailjs
+      .send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          to_name: "Devansh Arora",
+          from_email: formData.email,
+          to_email: "devansh1807@gmail.com",
+          message: formData.message,
+        },
+        EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          setLoading(false);
+          showAlert({
+            show: true,
+            text: "Thank you for your message 😃",
+            type: "success",
+          });
 
-  }
+          setTimeout(() => {
+            hideAlert(false);
+            setAnimation("idle");
+            setFormData({
+              name: "",
+              email: "",
+              message: "",
+            });
+          }, [3000]);
+        },
+        (error) => {
+          setLoading(false);
+          console.error(error);
+          setAnimation("idle");
+
+          showAlert({
+            show: true,
+            text: "I didn't receive your message 😢",
+            type: "danger",
+          });
+        }
+      );
+  };
   
   const handleChange = (e) =>{
       setAnimation("hit")
@@ -37,6 +88,7 @@ const Page = () => {
   }
   return (
     <div className={`w-full h-full min-h-screen ${styles.bg}`}>
+      {alert.show && <Alert {...alert} />}
       <Headbar theme={theme}/>
       <section className='relative flex lg:flex-row flex-col max-container'>
         
