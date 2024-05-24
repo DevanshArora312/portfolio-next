@@ -74,9 +74,11 @@ const ProjectPage = () => {
 };
 
 const Project = ()=>{
-  <Suspense>
+  return(
+    <Suspense>
     <ProjectPage/>
   </Suspense>
+  )
 }
 
 export default Project;

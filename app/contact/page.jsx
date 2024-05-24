@@ -23,8 +23,8 @@ const Page = () => {
     // console.log(SERVICE_ID,TEMPLATE_ID,EMAILJS_PUBLIC_KEY)
     emailjs
       .send(
-        SERVICE_ID,
-        TEMPLATE_ID,
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID,
         {
           from_name: formData.name,
           to_name: "Devansh Arora",
@@ -32,7 +32,7 @@ const Page = () => {
           to_email: "devansh1807@gmail.com",
           message: formData.message,
         },
-        EMAILJS_PUBLIC_KEY
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       )
       .then(
         () => {
