@@ -8,7 +8,7 @@ import Headbar from '../components/Headbar';
 import Alert from "../components/Alerts";
 import useAlert from "../hooks/useAlerts";
 import emailjs from "@emailjs/browser";
-import {SERVICE_ID,TEMPLATE_ID,EMAILJS_PUBLIC_KEY} from "../config"
+// import {SERVICE_ID,TEMPLATE_ID,EMAILJS_PUBLIC_KEY} from "../config"
 const Page = () => {
   const [isLoading, setLoading] = useState(false);
   const [formData,setFormData] = useState({name : "",email : "",message:""});
@@ -23,8 +23,8 @@ const Page = () => {
     // console.log(SERVICE_ID,TEMPLATE_ID,EMAILJS_PUBLIC_KEY)
     emailjs
       .send(
-        process.env.NEXT_PUBLIC_SERVICE_ID,
-        process.env.NEXT_PUBLIC_TEMPLATE_ID,
+        process.env.SERVICE_ID,
+        process.env.TEMPLATE_ID,
         {
           from_name: formData.name,
           to_name: "Devansh Arora",
@@ -32,7 +32,7 @@ const Page = () => {
           to_email: "devansh1807@gmail.com",
           message: formData.message,
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+        process.env.EMAILJS_PUBLIC_KEY
       )
       .then(
         () => {
